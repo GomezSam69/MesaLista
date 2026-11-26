@@ -1,0 +1,23 @@
+@"
+# Dependencias
+node_modules/
+
+# Variables de entorno (contienen claves; NO subir)
+.env
+.env.*
+!.env.example
+
+# Compilados
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operativo y editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+"@ | Set-Content -Encoding utf8 .gitignore
