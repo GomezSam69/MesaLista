@@ -1,0 +1,69 @@
+erDiagram
+    CATEGORIAS ||--o{ PLATOS : tiene
+    PLATOS ||--o{ DETALLE_PEDIDO : "en"
+    PEDIDOS ||--|{ DETALLE_PEDIDO : contiene
+    MESAS ||--o{ PEDIDOS : recibe
+    EMPLEADOS ||--o{ PEDIDOS : registra
+    CLIENTES |o--o{ PEDIDOS : "opcional"
+    CLIENTES ||--o{ RESERVAS : realiza
+    MESAS ||--o{ RESERVAS : reserva
+
+    CATEGORIAS {
+        int id_categoria PK
+        varchar nombre UK
+        varchar descripcion
+        boolean activa
+    }
+    PLATOS {
+        int id_plato PK
+        int id_categoria FK
+        varchar nombre
+        varchar descripcion
+        decimal precio "CHECK >= 0"
+        boolean disponible
+    }
+    MESAS {
+        int id_mesa PK
+        varchar numero UK
+        int capacidad "CHECK > 0"
+        enum estado "disponible, ocupada, fuera de servicio"
+    }
+    EMPLEADOS {
+        int id_empleado PK
+        varchar nombre
+        varchar telefono
+        varchar correo
+        varchar cargo
+        boolean activo
+    }
+    CLIENTES {
+        int id_cliente PK
+        varchar nombre
+        varchar telefono
+        varchar correo
+    }
+    RESERVAS {
+        int id_reserva PK
+        int id_cliente FK
+        int id_mesa FK
+        datetime fecha_hora
+        int personas "CHECK > 0"
+        enum estado "pendiente, confirmada, cancelada, atendida"
+    }
+    PEDIDOS {
+        int id_pedido PK
+        int id_mesa FK
+        int id_empleado FK
+        int id_cliente FK "opcional"
+        datetime fecha_hora
+        enum estado "pendiente, en cocina, entregado, anulado"
+        decimal total
+    }
+    DETALLE_PEDIDO {
+        int id_detalle PK
+        int id_pedido FK
+        int id_plato FK
+        int cantidad "CHECK > 0"
+        decimal precio_unitario
+        decimal subtotal
+    }

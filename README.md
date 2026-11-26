@@ -70,5 +70,11 @@ Cada recurso (`platos`, `categorias`, `mesas`, `empleados`, `clientes`, `reserva
 ## Puntos que el documento no define (decisiones del equipo)
 Revisar con el docente antes de entregar: ver el resumen de decisiones entregado junto con esta versión.
 
+## Pruebas y documentación
+- `cd backend && npm test`: 26 pruebas de integración de la API (requiere MySQL y la API corriendo). Dejan registros `TEST_`; recargue `mesalista.sql` sobre una base vacía para limpiarlos.
+- `docs/PRUEBAS.md`: casos de prueba y resultados.
+- `docs/diagrama_er.png` / `.svg` / `.mmd`: diagrama entidad-relación generado desde el esquema SQL.
+- `CLAUDE.md`: contexto del proyecto para quien trabaje con Claude.
+
 ## Nota académica
-Antes de entregar, el equipo debe completar capturas, diagrama ER definitivo (la figura del PDF no es verificable desde el código) y documentación de pruebas.
+Antes de entregar, el equipo debe adjuntar las capturas de `docs/PRUEBAS.md` y comparar `docs/diagrama_er.png` con la figura 1 del PDF.
